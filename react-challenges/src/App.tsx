@@ -1,34 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import LoginForm from './components/LoginForm'
+import RegisterForm from './components/RegisterForm'
+import { 
+  useState, 
+  ChangeEvent 
+} from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [isAuth, setIsAuth ] = useState(false)
+  const [ formData, setFormData ] = useState({
+    email: '',
+    password: '',
+    repeat_password: '',
+    first_name: '',
+    last_name: '',
+    phone: '',
+    company: ''
+  })
+
+  const handleSignUp = () => {
+      
+  }
+  
+  const handleInputChange = (
+    event: ChangeEvent<HTMLInputElement>
+  ) => {
+    const { name, value } = event.target
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className='pt-10 full-height'>
+      { !isAuth ? (
+        <RegisterForm 
+          isAuth={isAuth}
+          setIsAuth={setIsAuth} 
+        />
+      ) : (
+          <LoginForm 
+            isAuth={isAuth}
+            setIsAuth={setIsAuth} 
+          />
+        )
+      } 
+    </div>
   )
 }
 

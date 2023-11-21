@@ -28,3 +28,37 @@ export default {
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+#Tailwind 
+- npm install -D tailwindcss postcss autoprefixer
+- npx tailwindcss init -p
+- Add this code in the "tailwind.config.js":
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+- Add this code in "index.css" file
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+- Create a new folder named "components" and put all your React Components there.
+App.tsx
+export default function App() {
+  return (
+    <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
+  )
+}
+
+- Configuration for flowbite
+npm install flowbite flowbite-react
