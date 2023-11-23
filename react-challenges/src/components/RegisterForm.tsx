@@ -1,4 +1,5 @@
 import { Props } from "./LoginForm"
+import { useGoogleAuth } from "../hooks/useGoogleAuth"
 
 const RegisterForm = (
   { 
@@ -8,6 +9,8 @@ const RegisterForm = (
     handleSignUp
   }: Props
 ) => {
+  const { googleLogin } = useGoogleAuth()
+
   return (
     <form 
       className="max-w-md mx-auto"
@@ -118,17 +121,22 @@ const RegisterForm = (
             </label>
         </div>
       </div>
-      <div className="md:flex justify-between">
+      <div className="flex flex-col mt-2">
         <button 
           type="submit" 
           className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             Submit
         </button>
         <button 
+          onClick={googleLogin}
+          className="mt-1 text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+            Google
+        </button>
+        <button 
           onClick={() => setIsAuth(!isAuth)}
-          className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br`">
+          className="mt-1 relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br`">
           <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white text-blue-600">
-          Are you Registered? Login
+          Did you SignUp? Register
           </span>
         </button>
       </div>

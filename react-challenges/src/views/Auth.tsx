@@ -1,4 +1,3 @@
-import '../App.css'
 import LoginForm from '../components/LoginForm'
 import RegisterForm from '../components/RegisterForm'
 import { cleanUser, User } from '../utility-functions'
